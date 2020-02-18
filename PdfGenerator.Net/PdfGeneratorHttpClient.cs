@@ -32,10 +32,10 @@ namespace PdfGenerator.Net
         {
         }
 
-        private PdfGeneratorHttpClient(PdfGeneratorAuthenticator feedlyAuthenticator) : base(feedlyAuthenticator.Options.Domain)
+        private PdfGeneratorHttpClient(PdfGeneratorAuthenticator pdfGeneratorAuthenticator) : base(pdfGeneratorAuthenticator.Options.Domain)
         {
             this.UseNewtonsoftJson(PdfGeneratorContentSerialization.SerializerSettings);
-            this.Authenticator = feedlyAuthenticator;
+            this.Authenticator = pdfGeneratorAuthenticator;
             this.UserAgent = $"{nameof(PdfGeneratorHttpClient)}/{Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion}";
             this.Logger = PdfGeneratorHttpClientLogging.CreateLogger();
         }
