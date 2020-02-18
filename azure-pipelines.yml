@@ -30,16 +30,10 @@ steps:
     command: 'build'
     projects: '$(solution)'
     arguments: '--nologo --no-restore --configuration $(buildConfiguration) -p:Version=$(buildVersion)'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '$(solution)'
-    arguments: '--nologo --no-restore --configuration $(buildConfiguration)'
-    publishTestResults: true
+    
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '**/*.nupkg;!**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '1f9c08e1-1d30-4226-9bcd-990e6b0e1636'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget'
