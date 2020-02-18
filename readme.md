@@ -5,7 +5,7 @@
 
 An HTTP Client and PDF builder that interfaces with EMoney PDF Cloud API. 
 
-[![Build Status](https://dev.azure.com/nenvy/PdfGenerator/_apis/build/status/Zettersten.PdfGenerator?branchName=master)](https://dev.azure.com/nenvy/PdfGenerator.Net/_build/latest?definitionId=8&branchName=master) [![NuGet Badge](https://buildstats.info/nuget/PdfGenerator.Net)](https://www.nuget.org/packages/PdfGenerator.Net/)
+[![Build Status](https://dev.azure.com/nenvy/PdfGenerator.Net/_apis/build/status/Zettersten.PdfGenerator.Net?branchName=master)](https://dev.azure.com/nenvy/PdfGenerator.Net/_build/latest?definitionId=9&branchName=master)
 
 
 ## Installation
