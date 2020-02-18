@@ -1,7 +1,7 @@
-![PdfGenerator.Net](https://raw.githubusercontent.com/Zettersten/PdfGenerator/master/PdfGenerator.Net/PdfGenerator.png "PdfGenerator.Net")
+![PdfGenerator.Net](https://raw.githubusercontent.com/Zettersten/PdfGenerator.Net/master/PdfGenerator.Net/PdfGenerator.png "PdfGenerator.Net")
 # PdfGenerator.Net
 
-![Build history](https://buildstats.info/azurepipelines/chart/nenvy/PdfGenerator.Net/8)
+![Build history](https://buildstats.info/azurepipelines/chart/nenvy/PdfGenerator.Net/9)
 
 An HTTP Client and PDF builder that interfaces with EMoney PDF Cloud API. 
 
