@@ -12,7 +12,7 @@ namespace PdfGenerator.Net.Builders
 
         ReportBuilder AddTable(ITableBuilder tableBuilder);
 
-        ReportBuilder AddMinRowHeight(double minHeight = 14);
+        ReportBuilder AddMinRowHeight(double minHeight = 13);
 
         PdfReportModel Build();
 
@@ -22,9 +22,29 @@ namespace PdfGenerator.Net.Builders
 
         ReportBuilder WithPageBorders(double borderWidth, string borderColor = "#cccccc", string borderDirection = "top");
 
-        ReportBuilder WithPageFooters(string content, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "center", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0);
+        ReportBuilder WithPageFooters(
+            string content,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "center",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
+            double margins = 0);
 
-        ReportBuilder WithPageHeaders(string content, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "center", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0);
+        ReportBuilder WithPageHeaders(
+            string content,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "center",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
+            double margins = 0);
 
         ReportBuilder WithPageNumbers(string pageNumberTemplate = null);
     }

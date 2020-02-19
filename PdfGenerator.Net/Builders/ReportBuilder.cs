@@ -78,7 +78,17 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public ReportBuilder WithPageHeaders(string content, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "center", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0)
+        public ReportBuilder WithPageHeaders(
+            string content,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "center",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
+            double margins = 0)
         {
             if (report.PageHeader == null)
             {
@@ -97,7 +107,17 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public ReportBuilder WithPageFooters(string content, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "center", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0)
+        public ReportBuilder WithPageFooters(
+            string content,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "center",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
+            double margins = 0)
         {
             if (report.PageFooter == null)
             {

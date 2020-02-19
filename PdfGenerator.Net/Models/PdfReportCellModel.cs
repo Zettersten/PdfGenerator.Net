@@ -144,6 +144,20 @@ namespace PdfGenerator.Net.Models
         public string TextAlign { get; set; }
 
         /// <summary>
+        /// Gets or Sets FontStyle
+        /// </summary>
+        [DataMember(Name = "fontStyle", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "fontStyle")]
+        public string FontStyle { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VerticalAlignment
+        /// </summary>
+        [DataMember(Name = "verticalAlignment", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "verticalAlignment")]
+        public string VerticalAlignment { get; set; }
+
+        /// <summary>
         /// Gets or Sets Width
         /// </summary>
         [DataMember(Name = "width", EmitDefaultValue = false)]
@@ -216,6 +230,8 @@ namespace PdfGenerator.Net.Models
             sb.Append("  FontFamily: ").Append(FontFamily).Append("\n");
             sb.Append("  FontWeight: ").Append(FontWeight).Append("\n");
             sb.Append("  FontSize: ").Append(FontSize).Append("\n");
+            sb.Append("  FontStyle: ").Append(FontStyle).Append("\n");
+            sb.Append("  VerticalAlignment: ").Append(VerticalAlignment).Append("\n");
             sb.Append("  LineHeight: ").Append(LineHeight).Append("\n");
             sb.Append("  LetterSpacing: ").Append(LetterSpacing).Append("\n");
             sb.Append("  TextAlign: ").Append(TextAlign).Append("\n");

@@ -127,8 +127,8 @@ namespace PdfGenerator.Net.Tests
 
         public static PdfReportModel BasicTable_Sample => ReportBuilder
             .WithMetaData("Erik Zettersten", "Erik The Red", "Erik's Subject")
-            .WithPageHeaders("Header Content", 12, "#000000", "Helvetica", "center", "bold", "#FFFFFF", 6)
-            .WithPageFooters("Footer Content", 12, "#cccccc", "Helvetica", "center", "bold", "#efefef", 3)
+            .WithPageHeaders("Header Content", 12, "#000000", "Helvetica", "center", "bold", "#FFFFFF", margins: 6)
+            .WithPageFooters("Footer Content", 12, "#cccccc", "Helvetica", "center", "bold", "#efefef", margins: 3)
             .WithAlternatingRowBackgroundColors()
             .AddTable(
                 TableBuilder

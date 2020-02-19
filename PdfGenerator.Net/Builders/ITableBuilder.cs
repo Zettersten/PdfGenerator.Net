@@ -19,8 +19,12 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1);
 
+        TableBuilder AddRowSpacer(int height);
+ 
         TableBuilder AddHeaderData(IEnumerable<PdfReportCellModel> headerContent);
 
         TableBuilder AddHeaderData(string[] headerContent,
@@ -35,6 +39,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1);
 
         TableBuilder AddRowData(IEnumerable<PdfReportCellModel> rowContent);
@@ -51,6 +57,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1);
 
         PdfTableModel Build(bool hasAlternatingRowBackgroundColor = false, string alternatingRowBackgroundColor = "#efefef");
@@ -74,6 +82,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1);
     }
 }

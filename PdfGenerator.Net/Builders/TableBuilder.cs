@@ -43,6 +43,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1)
         {
             table.ShouldInsertRowNumbers = true;
@@ -64,6 +66,8 @@ namespace PdfGenerator.Net.Builders
             table.RowNumberFormat.BorderColor = borderColor;
             table.RowNumberFormat.BorderWidth = borderWidth;
             table.RowNumberFormat.BorderDirection = borderDirection;
+            table.RowNumberFormat.VerticalAlignment = verticalAlignment;
+            table.RowNumberFormat.FontStyle = fontStyle;
 
             return this;
         }
@@ -93,6 +97,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1)
         {
             return AddHeaderData(headerContent.Select(x => new PdfReportCellModel
@@ -110,6 +116,8 @@ namespace PdfGenerator.Net.Builders
                 BorderColor = borderColor,
                 BorderWidth = borderWidth,
                 BorderDirection = borderDirection,
+                FontStyle = fontStyle,
+                VerticalAlignment = verticalAlignment
             }));
         }
 
@@ -137,6 +145,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1)
         {
             return AddFooterData(footerContent.Select(x => new PdfReportCellModel
@@ -153,7 +163,9 @@ namespace PdfGenerator.Net.Builders
                 InnerMargins = margins,
                 BorderColor = borderColor,
                 BorderWidth = borderWidth,
-                BorderDirection = borderDirection
+                BorderDirection = borderDirection,
+                FontStyle = fontStyle,
+                VerticalAlignment = verticalAlignment
             }));
         }
 
@@ -181,6 +193,8 @@ namespace PdfGenerator.Net.Builders
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
+            string fontStyle = "normal",
+            string verticalAlignment = "center",
             int colSpan = 1)
         {
             return AddRowData(rowContent.Select(x => new PdfReportCellModel
@@ -197,7 +211,9 @@ namespace PdfGenerator.Net.Builders
                 InnerMargins = margins,
                 BorderColor = borderColor,
                 BorderWidth = borderWidth,
-                BorderDirection = borderDirection
+                BorderDirection = borderDirection,
+                FontStyle = fontStyle,
+                VerticalAlignment = verticalAlignment
             }));
         }
 
@@ -234,6 +250,22 @@ namespace PdfGenerator.Net.Builders
         public IEnumerator<PdfReportCellModel> GetEnumerator() => AllCells.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public TableBuilder AddRowSpacer(int height = 1)
+        {
+            for (int i = 0; i < height; i++)
+            {
+                AddRowData(new List<PdfReportCellModel>
+                {
+                    new PdfReportCellModel
+                    {
+                        Value = " "
+                    }
+                });
+            }
+
+            return this;
+        }
 
         private IEnumerable<PdfReportCellModel> AllCells
         {
