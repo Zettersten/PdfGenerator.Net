@@ -203,6 +203,7 @@ namespace PdfGenerator.Net.Models
             sb.Append("  TableNumber: ").Append(TableNumber).Append("\n");
             sb.Append("  CellNumber: ").Append(CellNumber).Append("\n");
             sb.Append("  RowNumber: ").Append(RowNumber).Append("\n");
+            sb.Append("  ColSpan: ").Append(ColSpan).Append("\n");
             sb.Append("  ImageHref: ").Append(ImageHref).Append("\n");
             sb.Append("  HasImage: ").Append(HasImage).Append("\n");
             sb.Append("  BorderWidth: ").Append(BorderWidth).Append("\n");
