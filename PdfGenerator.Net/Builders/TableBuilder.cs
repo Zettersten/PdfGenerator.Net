@@ -32,7 +32,18 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public TableBuilder WithRowNumbers(double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "center", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1)
+        public TableBuilder WithRowNumbers(double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "center",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1)
         {
             table.ShouldInsertRowNumbers = true;
 
@@ -50,6 +61,9 @@ namespace PdfGenerator.Net.Builders
             table.RowNumberFormat.ColSpan = colSpan;
             table.RowNumberFormat.BackgroundColor = backgroundColor;
             table.RowNumberFormat.InnerMargins = margins;
+            table.RowNumberFormat.BorderColor = borderColor;
+            table.RowNumberFormat.BorderWidth = borderWidth;
+            table.RowNumberFormat.BorderDirection = borderDirection;
 
             return this;
         }
@@ -66,7 +80,20 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public TableBuilder AddHeaderData(string[] headerContent, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "left", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1)
+        public TableBuilder AddHeaderData(
+            string[] headerContent,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "left",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1)
         {
             return AddHeaderData(headerContent.Select(x => new PdfReportCellModel
             {
@@ -79,7 +106,10 @@ namespace PdfGenerator.Net.Builders
                 ColSpan = colSpan,
                 Color = color,
                 BackgroundColor = backgroundColor,
-                InnerMargins = margins
+                InnerMargins = margins,
+                BorderColor = borderColor,
+                BorderWidth = borderWidth,
+                BorderDirection = borderDirection,
             }));
         }
 
@@ -95,7 +125,19 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public TableBuilder AddFooterData(string[] footerContent, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "left", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1)
+        public TableBuilder AddFooterData(string[] footerContent,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "left",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1)
         {
             return AddFooterData(footerContent.Select(x => new PdfReportCellModel
             {
@@ -108,7 +150,10 @@ namespace PdfGenerator.Net.Builders
                 ColSpan = colSpan,
                 Color = color,
                 BackgroundColor = backgroundColor,
-                InnerMargins = margins
+                InnerMargins = margins,
+                BorderColor = borderColor,
+                BorderWidth = borderWidth,
+                BorderDirection = borderDirection
             }));
         }
 
@@ -124,7 +169,19 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public TableBuilder AddRowData(string[] rowContent, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "left", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1)
+        public TableBuilder AddRowData(string[] rowContent,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "left",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1)
         {
             return AddRowData(rowContent.Select(x => new PdfReportCellModel
             {
@@ -137,7 +194,10 @@ namespace PdfGenerator.Net.Builders
                 ColSpan = colSpan,
                 Color = color,
                 BackgroundColor = backgroundColor,
-                InnerMargins = margins
+                InnerMargins = margins,
+                BorderColor = borderColor,
+                BorderWidth = borderWidth,
+                BorderDirection = borderDirection
             }));
         }
 
@@ -145,6 +205,11 @@ namespace PdfGenerator.Net.Builders
         {
             if (hasAlternatingRowBackgroundColor)
             {
+                if (table.Body == null)
+                {
+                    return table;
+                }
+
                 for (int i = 0; i < table.Body.Count; i++)
                 {
                     if (i % 2 == 0)

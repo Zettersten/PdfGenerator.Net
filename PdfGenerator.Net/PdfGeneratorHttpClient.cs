@@ -46,7 +46,7 @@ namespace PdfGenerator.Net
 
         public Task<SuccessModel<string>> GeneratePdf(IReportBuilder builder, CancellationToken cancellationToken = default)
         {
-            return GeneratePdf(builder.Create(), cancellationToken);
+            return GeneratePdf(builder.Build(), cancellationToken);
         }
 
         public async Task<SuccessModel<string>> GeneratePdf(PdfReportModel pdfReport, CancellationToken cancellationToken = default)
@@ -68,7 +68,7 @@ namespace PdfGenerator.Net
 
         public Task<List<Uri>> GenerateSvgs(IReportBuilder builder, CancellationToken cancellationToken = default)
         {
-            return GenerateSvgs(builder.Create(), cancellationToken);
+            return GenerateSvgs(builder.Build(), cancellationToken);
         }
 
         public async Task<List<Uri>> GenerateSvgs(PdfReportModel pdfReport, CancellationToken cancellationToken = default)

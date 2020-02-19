@@ -15,6 +15,31 @@ namespace PdfGenerator.Net.Builders
             this.report = new PdfReportModel();
         }
 
+        public ReportBuilder AddSpacer(int height = 10)
+        {
+            return AddTable(
+                new TableBuilder()
+                .WithOuterMargins(height)
+                .AddHeaderData(new string[] { " " })
+                .AddRowData(new string[] { " " })
+                .AddFooterData(new string[] { " " })
+             );
+        }
+
+        public ReportBuilder AddHorizontalRule(double borderWidth = 2, string borderColor = "#cccccc", string borderDirection = "top")
+        {
+            return AddTable(
+                new TableBuilder()
+                .WithInnerMargins(0)
+                .WithOuterMargins(0)
+                .AddHeaderData(
+                    new string[] { " " },
+                    borderWidth: borderWidth,
+                    borderColor: borderColor,
+                    borderDirection: borderDirection)
+             );
+        }
+
         private bool HasAlternatingRowBackgroundColor { get; set; }
 
         private string AlternatingRowBackgroundColor { get; set; }
@@ -44,7 +69,7 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public ReportBuilder WithPageBorders(double borderWidth, string borderColor = "#cccccc", string borderDirection = "all")
+        public ReportBuilder WithPageBorders(double borderWidth, string borderColor = "#cccccc", string borderDirection = "top")
         {
             report.BorderWidth = borderWidth;
             report.BorderColor = borderColor;
@@ -115,7 +140,7 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public PdfReportModel Create()
+        public PdfReportModel Build()
         {
             return report;
         }

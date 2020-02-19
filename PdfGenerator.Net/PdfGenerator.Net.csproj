@@ -3,7 +3,7 @@
     <Description>
       An HTTP Client that interfaces with EMoney PDF Cloud API.
     </Description>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>PdfGenerator.Net</AssemblyName>
     <PackageId>PdfGenerator.Net</PackageId>

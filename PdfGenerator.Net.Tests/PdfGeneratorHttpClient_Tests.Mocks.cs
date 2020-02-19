@@ -41,6 +41,35 @@ namespace PdfGenerator.Net.Tests
                     .AddRowData(new string[] { "Row 16 -> First", "Row 16 -> Second", "Row 16 -> Third", "Row 16 -> Fourth" })
                     .AddRowData(new string[] { "Row 17 -> First", "Row 17 -> Second", "Row 17 -> Third", "Row 17 -> Fourth" })
                     .AddFooterData(new string[] { "Footer -> First", "Footer -> Second", "Footer -> Third", "Footer -> Fourth" }, 12, "#FFFFFF", "Helvetica", "center", "bold", "#000000", 2)
-            ).Create();
+            )
+            .AddHorizontalRule()
+            .AddTable(
+                TableBuilder
+                    .AddHeaderData(new string[] { "Header -> First", "Header -> Second", "Header -> Third", "Header -> Fourth" }, 14, "#FFFFFF", "Helvetica", "left", "bold", "#000000", 2)
+                    .AddRowData(new string[] { "Row 1 -> First", "Row 1 -> Second", "Row 1 -> Third", "Row 1 -> Fourth" })
+                    .AddRowData(new string[] { "Row 2 -> First", "Row 2 -> Second", "Row 2 -> Third", "Row 2 -> Fourth" })
+                    .AddRowData(new string[] { "Row 3 -> First", "Row 3 -> Second", "Row 3 -> Third", "Row 3 -> Fourth" })
+                    .AddFooterData(new string[] { "Footer -> First", "Footer -> Second", "Footer -> Third", "Footer -> Fourth" }, 12, "#FFFFFF", "Helvetica", "center", "bold", "#000000", 2)
+            )
+            .AddHorizontalRule(10)
+            .AddTable(
+                TableBuilder
+                    .AddHeaderData(new string[] { "Header -> First", "Header -> Second", "Header -> Third", "Header -> Fourth" }, 14, "#FFFFFF", "Helvetica", "left", "bold", "#000000", 2)
+                    .AddRowData(new string[] { "Row 1 -> First", "Row 1 -> Second", "Row 1 -> Third", "Row 1 -> Fourth" })
+                    .AddRowData(new string[] { "Row 2 -> First", "Row 2 -> Second", "Row 2 -> Third", "Row 2 -> Fourth" })
+                    .AddRowData(new string[] { "Row 3 -> First", "Row 3 -> Second", "Row 3 -> Third", "Row 3 -> Fourth" })
+                    .AddFooterData(new string[] { "Footer -> First", "Footer -> Second", "Footer -> Third", "Footer -> Fourth" }, 12, "#FFFFFF", "Helvetica", "center", "bold", "#000000", 2)
+            )
+            .AddSpacer(100)
+            .AddTable(
+                TableBuilder
+                    .AddHeaderData(new string[] { "Header -> First", "Header -> Second", "Header -> Third", "Header -> Fourth" }, 14, "#FFFFFF", "Helvetica", "left", "bold", "#000000", 2)
+                    .AddRowData(new string[] { "Row 1 -> First", "Row 1 -> Second", "Row 1 -> Third", "Row 1 -> Fourth" })
+                    .AddRowData(new string[] { "Row 2 -> First", "Row 2 -> Second", "Row 2 -> Third", "Row 2 -> Fourth" })
+                    .AddRowData(new string[] { "Row 3 -> First", "Row 3 -> Second", "Row 3 -> Third", "Row 3 -> Fourth" })
+                    .AddFooterData(new string[] { "Footer -> First", "Footer -> Second", "Footer -> Third", "Footer -> Fourth" }, 12, "#FFFFFF", "Helvetica", "center", "bold", "#000000", 2)
+            )
+            .AddHorizontalRule(20, "#000000", "all")
+            .Build();
     }
 }

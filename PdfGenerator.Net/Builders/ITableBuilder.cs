@@ -7,15 +7,51 @@ namespace PdfGenerator.Net.Builders
     {
         TableBuilder AddFooterData(IEnumerable<PdfReportCellModel> footerContent);
 
-        TableBuilder AddFooterData(string[] footerContent, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "left", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1);
+        TableBuilder AddFooterData(string[] footerContent,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "left",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1);
 
         TableBuilder AddHeaderData(IEnumerable<PdfReportCellModel> headerContent);
 
-        TableBuilder AddHeaderData(string[] headerContent, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "left", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1);
+        TableBuilder AddHeaderData(string[] headerContent,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "left",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1);
 
         TableBuilder AddRowData(IEnumerable<PdfReportCellModel> rowContent);
 
-        TableBuilder AddRowData(string[] rowContent, double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "left", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1);
+        TableBuilder AddRowData(string[] rowContent,
+            double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "left",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1);
 
         PdfTableModel Build(bool hasAlternatingRowBackgroundColor = false, string alternatingRowBackgroundColor = "#efefef");
 
@@ -27,6 +63,17 @@ namespace PdfGenerator.Net.Builders
 
         TableBuilder WithPageBreak();
 
-        TableBuilder WithRowNumbers(double fontSize = 12, string color = "#000000", string fontFamily = "Helvetica", string textAlign = "center", string fontWeight = "normal", string backgroundColor = "#ffffff", double margins = 0, double width = 0, int colSpan = 1);
+        TableBuilder WithRowNumbers(double fontSize = 12,
+            string color = "#000000",
+            string fontFamily = "Helvetica",
+            string textAlign = "center",
+            string fontWeight = "normal",
+            string backgroundColor = "#ffffff",
+            double margins = 0,
+            double width = 0,
+            string borderColor = "#cccccc",
+            double borderWidth = 0,
+            string borderDirection = "top",
+            int colSpan = 1);
     }
 }
