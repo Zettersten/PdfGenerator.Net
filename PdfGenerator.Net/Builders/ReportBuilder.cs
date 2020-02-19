@@ -144,5 +144,11 @@ namespace PdfGenerator.Net.Builders
         {
             return report;
         }
+
+        public ReportBuilder AddMinRowHeight(double minHeight = 14)
+        {
+            report.MinRowHeight = minHeight;
+            return this;
+        }
     }
 }

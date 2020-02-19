@@ -12,6 +12,8 @@ namespace PdfGenerator.Net.Builders
 
         ReportBuilder AddTable(ITableBuilder tableBuilder);
 
+        ReportBuilder AddMinRowHeight(double minHeight = 14);
+
         PdfReportModel Build();
 
         ReportBuilder WithAlternatingRowBackgroundColors(string alternateBackgroundColor = "#efefef");

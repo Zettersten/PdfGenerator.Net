@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -22,5 +23,9 @@ namespace PdfGenerator.Net
         Task<List<Uri>> GenerateSvgs(IReportBuilder builder, CancellationToken cancellationToken = default);
 
         Task<List<Uri>> GenerateSvgs(PdfReportModel pdfReport, CancellationToken cancellationToken = default);
+
+        Task<Stream> GeneratePdfPreview(IReportBuilder builder, CancellationToken cancellationToken = default);
+
+        Task<Stream> GeneratePdfPreview(PdfReportModel pdfReport, CancellationToken cancellationToken = default);
     }
 }

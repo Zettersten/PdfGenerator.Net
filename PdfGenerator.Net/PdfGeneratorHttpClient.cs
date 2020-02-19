@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -64,6 +65,28 @@ namespace PdfGenerator.Net
             }
 
             return response.Data;
+        }
+
+        public Task<Stream> GeneratePdfPreview(IReportBuilder builder, CancellationToken cancellationToken = default)
+        {
+            return GeneratePdfPreview(builder.Build(), cancellationToken);
+        }
+
+        public async Task<Stream> GeneratePdfPreview(PdfReportModel pdfReport, CancellationToken cancellationToken = default)
+        {
+            var request = new RestRequest("reports/preview", Method.POST, DataFormat.Json);
+
+            request.AddJsonBody(pdfReport);
+
+            var response = await ExecutePostAsync(request, cancellationToken);
+
+            if (!response.IsSuccessful)
+            {
+                var error = JsonConvert.DeserializeObject<ErrorModel>(response.Content, PdfGeneratorContentSerialization.SerializerSettings);
+                throw new PdfGeneratorException(error);
+            }
+
+            return new MemoryStream(response.RawBytes);
         }
 
         public Task<List<Uri>> GenerateSvgs(IReportBuilder builder, CancellationToken cancellationToken = default)
