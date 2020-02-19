@@ -1,4 +1,6 @@
-﻿using PdfGenerator.Net.Builders;
+﻿using System;
+using System.Collections.Generic;
+using PdfGenerator.Net.Builders;
 using PdfGenerator.Net.Models;
 
 namespace PdfGenerator.Net.Tests
@@ -14,6 +16,114 @@ namespace PdfGenerator.Net.Tests
         public static ReportBuilder ReportBuilder => new ReportBuilder();
 
         public static TableBuilder TableBuilder => new TableBuilder();
+
+        public static PdfReportModel BasicStatment_Sample
+        {
+            get
+            {
+                var reportBuilder = new ReportBuilder();
+
+                reportBuilder
+                    .WithPageFooters(DateTime.Now.ToLongDateString(), 12, margins: 10);
+
+                var metaDataTable = new TableBuilder()
+                    .AddRowData(new List<PdfReportCellModel> {
+                        new PdfReportCellModel
+                        {
+                            TextAlign = "left",
+                            ImageHref = "https://media-exp1.licdn.com/dms/image/C4E0BAQEPjfJo2N3mnA/company-logo_200_200/0?e=2159024400&v=beta&t=relFszmxOw16LEMSq9PwyVewmvWRSaDco5iKu3Nimek",
+
+                        }
+                    })
+                    .AddRowData(new List<PdfReportCellModel>
+                    {
+                        new PdfReportCellModel
+                        {
+                            Value = "Ashburn, VA 20147 USA"
+                        }
+                    })
+                    .AddRowData(new List<PdfReportCellModel>
+                    {
+                        new PdfReportCellModel
+                        {
+                            Value = "1 (800) 834-7790",
+                            FontWeight = "bold"
+                        }
+                    })
+                    .AddRowData(new List<PdfReportCellModel>
+                    {
+                        new PdfReportCellModel
+                        {
+                            Value = "Test Account"
+                        }
+                    })
+                    .AddRowData(new List<PdfReportCellModel>
+                    {
+                        new PdfReportCellModel
+                        {
+                            Value = "20135 Lakeview Center Plaza"
+                        }
+                    })
+                    .AddRowData(new List<PdfReportCellModel>
+                    {
+                        new PdfReportCellModel
+                        {
+                            Value = "Ashburn, VA 20147 (USA)"
+                        }
+                    })
+                    .AddRowData(new List<PdfReportCellModel>
+                    {
+                        new PdfReportCellModel
+                        {
+                            Value = "7038957266"
+                        },
+                        new PdfReportCellModel
+                        {
+                            Value = "Primary Account Number: 000111000",
+                            TextAlign = "right",
+                            FontWeight = "bold"
+                        }
+                    })
+                    .Build();
+
+                reportBuilder.AddSpacer(5);
+
+                var accountStatementTable = new TableBuilder()
+                   .AddHeaderData(new List<PdfReportCellModel>
+                   {
+                        new PdfReportCellModel
+                        {
+                            Value = "Account Statement",
+                            BorderColor = "#000000",
+                            BorderWidth = 2,
+                            ColSpan = 3
+                        }
+                   })
+                   .AddRowData(new List<PdfReportCellModel> 
+                   {
+                        new PdfReportCellModel
+                        {
+                            Value = "If you have questions about your statement, please call us at 703-421-9101",
+                        },
+                        new PdfReportCellModel
+                        {
+                            Value = "Statement Date:",
+                            FontWeight = "bold"
+                        },
+                        new PdfReportCellModel
+                        {
+                            Value = "1/13/2020-2/13/2020",
+                            TextAlign = "right"
+                        }
+                   })
+                   .Build();
+
+                reportBuilder.AddTable(metaDataTable);
+                reportBuilder.AddTable(accountStatementTable);
+
+                return reportBuilder.Build();
+            }
+        }
 
         public static PdfReportModel BasicTable_Sample => ReportBuilder
             .WithMetaData("Erik Zettersten", "Erik The Red", "Erik's Subject")

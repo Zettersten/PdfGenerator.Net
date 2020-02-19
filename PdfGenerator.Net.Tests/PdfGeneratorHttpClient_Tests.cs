@@ -1,9 +1,22 @@
-﻿using Xunit;
+﻿using System;
+using System.IO;
+using Xunit;
 
 namespace PdfGenerator.Net.Tests
 {
     public partial class PdfGeneratorHttpClient_Tests
     {
+        public string ProjectDirectory
+        {
+            get
+            {
+                var workingDirectory = Environment.CurrentDirectory;
+                var projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+
+                return projectDirectory;
+            }
+        }
+
         [Fact]
         public void Should_create_instance_with_options()
         {
@@ -11,7 +24,7 @@ namespace PdfGenerator.Net.Tests
         }
 
         [Fact]
-        public void Should_generate_pdf_and_return_url()
+        public void Should_generate_basic_table_pdf_and_return_url()
         {
             var pdfGenerator = PdfGenerator;
 
@@ -26,7 +39,22 @@ namespace PdfGenerator.Net.Tests
         }
 
         [Fact]
-        public void Should_generate_svg_and_return_urls()
+        public void Should_generate_basic_statment_pdf_and_return_url()
+        {
+            var pdfGenerator = PdfGenerator;
+
+            var response = pdfGenerator
+                .GeneratePdf(
+                    BasicStatment_Sample
+                )
+                .GetAwaiter().GetResult();
+
+            Assert.NotNull(response);
+            Assert.True(response.IsSuccess);
+        }
+
+        [Fact]
+        public void Should_generate_basic_table_svgs_and_return_urls()
         {
             var pdfGenerator = PdfGenerator;
 
@@ -38,6 +66,37 @@ namespace PdfGenerator.Net.Tests
 
             Assert.NotNull(response);
             Assert.True(response.Count > 0);
+        }
+
+        [Fact]
+        public void Should_generate_basic_statement_svgs_and_return_urls()
+        {
+            var pdfGenerator = PdfGenerator;
+
+            var response = pdfGenerator
+                .GenerateSvgs(
+                    BasicStatment_Sample
+                )
+                .GetAwaiter().GetResult();
+
+            Assert.NotNull(response);
+            Assert.True(response.Count > 0);
+        }
+
+        [Fact]
+        public void Should_generate_basic_json_from_reportBuilder()
+        {
+            var jsonString = BasicTable_Sample.ToJson();
+
+            File.WriteAllText(Path.Combine(ProjectDirectory, "basic_table.json"), jsonString);
+        }
+
+        [Fact]
+        public void Should_generate_statement_json_from_reportBuilder()
+        {
+            var jsonString = BasicStatment_Sample.ToJson();
+
+            File.WriteAllText(Path.Combine(ProjectDirectory, "basic_statement.json"), jsonString);
         }
     }
 }
