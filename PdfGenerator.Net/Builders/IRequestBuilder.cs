@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using PdfGenerator.Net.Models;
@@ -13,6 +14,8 @@ namespace PdfGenerator.Net.Builders
         Task<Uri> SendAsync();
 
         Task PreviewAsync(string filePath);
+
+        Task PreviewAsync(Stream stream);
 
         RequestBuilder WithAuthenticator(IAuthenticator authenticator);
 

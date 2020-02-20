@@ -61,5 +61,12 @@ namespace PdfGenerator.Net.Builders
 
             await response.CopyToAsync(fileStream);
         }
+
+        public async Task PreviewAsync(Stream stream)
+        {   
+            using var response = await pdfGenerator.GeneratePdfPreview(pdfReportModel);
+
+            await response.CopyToAsync(stream);
+        }
     }
 }
