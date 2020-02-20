@@ -24,8 +24,12 @@ namespace PdfGenerator.Net.Builders
             int colSpan = 1);
 
         TableBuilder AddRowSpacer(int height);
- 
+
         TableBuilder AddHeaderData(IEnumerable<PdfReportCellModel> headerContent);
+
+        TableBuilder AddDefaultHeaderData(string content);
+
+        TableBuilder AddDefaultFooterData(string content);
 
         TableBuilder AddHeaderData(string[] headerContent,
             double fontSize = 12,
@@ -44,6 +48,8 @@ namespace PdfGenerator.Net.Builders
             int colSpan = 1);
 
         TableBuilder AddRowData(IEnumerable<PdfReportCellModel> rowContent);
+
+        TableBuilder AddRowData(IChartBuilder chartBuilder, int colSpan = 1, string textAlign = "center");
 
         TableBuilder AddRowData(string[] rowContent,
             double fontSize = 12,
@@ -85,5 +91,7 @@ namespace PdfGenerator.Net.Builders
             string fontStyle = "normal",
             string verticalAlignment = "center",
             int colSpan = 1);
+
+        void Clear();
     }
 }

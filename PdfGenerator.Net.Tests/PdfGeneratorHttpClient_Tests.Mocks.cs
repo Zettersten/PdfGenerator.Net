@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PdfGenerator.Net.Builders;
 using PdfGenerator.Net.Models;
 
@@ -17,6 +16,10 @@ namespace PdfGenerator.Net.Tests
 
         public static TableBuilder TableBuilder => new TableBuilder();
 
+        public static ChartJsBuilder ChartJsBuilder => new ChartJsBuilder();
+
+        public static RequestBuilder RequestBuilder => new RequestBuilder(PdfGenerator);
+
         public static PdfReportModel BasicStatment_Sample
         {
             get
@@ -24,17 +27,19 @@ namespace PdfGenerator.Net.Tests
                 var reportBuilder = new ReportBuilder();
 
                 reportBuilder
-                    .WithPageFooters(DateTime.Now.ToLongDateString(), 12, margins: 10);
+                    .WithMinRowHeight()
+                    .WithMetaData("Basic Statement Sample", "Erik Zettersten")
+                    .WithDefaultPageFooter();
 
                 var metaDataTable = new TableBuilder()
                     .AddRowData(new List<PdfReportCellModel> {
                         new PdfReportCellModel
                         {
                             TextAlign = "left",
-                            ImageHref = "https://media-exp1.licdn.com/dms/image/C4E0BAQEPjfJo2N3mnA/company-logo_200_200/0?e=2159024400&v=beta&t=relFszmxOw16LEMSq9PwyVewmvWRSaDco5iKu3Nimek",
-
+                            ImageHref = "https://i.ibb.co/26RrqYs/logo.png",
                         }
                     })
+                    .AddRowSpacer()
                     .AddRowData(new List<PdfReportCellModel>
                     {
                         new PdfReportCellModel
@@ -50,6 +55,7 @@ namespace PdfGenerator.Net.Tests
                             FontWeight = "bold"
                         }
                     })
+                    .AddRowSpacer()
                     .AddRowData(new List<PdfReportCellModel>
                     {
                         new PdfReportCellModel
@@ -84,26 +90,23 @@ namespace PdfGenerator.Net.Tests
                             FontWeight = "bold"
                         }
                     })
+                    .AddRowSpacer(3)
                     .Build();
 
-                reportBuilder.AddSpacer(5);
+                var chart = ChartJsBuilder
+                    .AddLabels("January", "February", "March", "April", "May")
+                    .AddData(50, 60, 70, 180, 190)
+                    .SetHeight(200);
 
                 var accountStatementTable = new TableBuilder()
-                   .AddHeaderData(new List<PdfReportCellModel>
-                   {
-                        new PdfReportCellModel
-                        {
-                            Value = "Account Statement",
-                            BorderColor = "#000000",
-                            BorderWidth = 2,
-                            ColSpan = 3
-                        }
-                   })
-                   .AddRowData(new List<PdfReportCellModel> 
+                   .AddDefaultHeaderData("Account Statement")
+                   .AddRowData(new List<PdfReportCellModel>
                    {
                         new PdfReportCellModel
                         {
                             Value = "If you have questions about your statement, please call us at 703-421-9101",
+                            FontStyle = "italics",
+                            Width = 600
                         },
                         new PdfReportCellModel
                         {
@@ -116,19 +119,21 @@ namespace PdfGenerator.Net.Tests
                             TextAlign = "right"
                         }
                    })
+                   .AddDefaultFooterData("$1000")
                    .Build();
 
-                reportBuilder.AddTable(metaDataTable);
-                reportBuilder.AddTable(accountStatementTable);
-
-                return reportBuilder.Build();
+                return reportBuilder
+                    .AddTable(metaDataTable)
+                    .AddTable(accountStatementTable)
+                    .AddChart(chart)
+                    .Build();
             }
         }
 
         public static PdfReportModel BasicTable_Sample => ReportBuilder
-            .WithMetaData("Erik Zettersten", "Erik The Red", "Erik's Subject")
-            .WithPageHeaders("Header Content", 12, "#000000", "Helvetica", "center", "bold", "#FFFFFF", margins: 6)
-            .WithPageFooters("Footer Content", 12, "#cccccc", "Helvetica", "center", "bold", "#efefef", margins: 3)
+            .WithMetaData("Basic Table Sample", "Erik Zettersten", "Erik's Subject")
+            .WithPageHeader("Header Content", 12, "#000000", "Helvetica", "center", "bold", "#FFFFFF", margins: 6)
+            .WithPageFooter("Footer Content", 12, "#cccccc", "Helvetica", "center", "bold", "#efefef", margins: 3)
             .WithAlternatingRowBackgroundColors()
             .AddTable(
                 TableBuilder
@@ -179,7 +184,7 @@ namespace PdfGenerator.Net.Tests
                     .AddRowData(new string[] { "Row 3 -> First", "Row 3 -> Second", "Row 3 -> Third", "Row 3 -> Fourth" })
                     .AddFooterData(new string[] { "Footer -> First", "Footer -> Second", "Footer -> Third", "Footer -> Fourth" }, 12, "#FFFFFF", "Helvetica", "center", "bold", "#000000", 2)
             )
-            .AddHorizontalRule(20, "#000000", "all")
+            .AddHorizontalRule(20, "#000000", "top")
             .Build();
     }
 }

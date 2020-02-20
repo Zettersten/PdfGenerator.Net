@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PdfGenerator.Net.Models;
 
 namespace PdfGenerator.Net.Builders
@@ -8,7 +9,7 @@ namespace PdfGenerator.Net.Builders
     /// </summary>
     public class ReportBuilder : IReportBuilder
     {
-        private readonly PdfReportModel report;
+        private PdfReportModel report;
 
         public ReportBuilder()
         {
@@ -78,7 +79,7 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public ReportBuilder WithPageHeaders(
+        public ReportBuilder WithPageHeader(
             string content,
             double fontSize = 12,
             string color = "#000000",
@@ -107,7 +108,7 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public ReportBuilder WithPageFooters(
+        public ReportBuilder WithPageFooter(
             string content,
             double fontSize = 12,
             string color = "#000000",
@@ -160,15 +161,87 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
+        public ReportBuilder AddChart(IChartBuilder chartBuilder, string textAlign = "center", int innerMargins = 0, int outerMargins = 0, bool newPageAfterChart = false)
+        {
+            var pdfTableModel = new PdfTableModel()
+            {
+                NewPageAfterTable = newPageAfterChart,
+                OuterMargins = outerMargins,
+                InnerMargins = innerMargins
+            };
+
+            pdfTableModel.Header = new List<PdfReportCellModel>
+            {
+                new PdfReportCellModel
+                {
+                    Value = " "
+                }
+            };
+
+            var cell = chartBuilder.BuildTableCell();
+            cell.TextAlign = textAlign;
+
+            pdfTableModel.Body = new List<List<PdfReportCellModel>>
+            {
+                new List<PdfReportCellModel>
+                {
+                    cell
+                }
+            };
+
+            pdfTableModel.Footer = new List<PdfReportCellModel>
+            {
+                new PdfReportCellModel
+                {
+                    Value = " "
+                }
+            };
+
+            if (report.Tables == null)
+            {
+                report.Tables = new List<PdfTableModel>();
+            }
+
+            report.Tables.Add(pdfTableModel);
+
+            return this;
+        }
+
         public PdfReportModel Build()
         {
             return report;
         }
 
-        public ReportBuilder AddMinRowHeight(double minHeight = 14)
+        public ReportBuilder WithMinRowHeight(double minHeight = 13)
         {
             report.MinRowHeight = minHeight;
             return this;
+        }
+
+        public ReportBuilder WithDefaultPageFooter()
+        {
+            var content = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+
+            if (!string.IsNullOrEmpty(report.Author))
+            {
+                content = content + " © " + report.Author;
+            }
+
+            return WithPageFooter(
+                content: content,
+                fontSize: 8,
+                margins: 10,
+                textAlign: "left");
+        }
+
+        public ReportBuilder WithDefaultPageHeader()
+        {
+            return WithDefaultPageFooter();
+        }
+
+        public void Clear()
+        {
+            this.report = new PdfReportModel();
         }
     }
 }

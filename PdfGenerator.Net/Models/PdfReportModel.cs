@@ -90,13 +90,6 @@ namespace PdfGenerator.Net.Models
         public string PageNumberTemplate { get; set; }
 
         /// <summary>
-        /// Gets or Sets HasBorder
-        /// </summary>
-        [DataMember(Name = "hasBorder", EmitDefaultValue = false)]
-        [JsonProperty(PropertyName = "hasBorder")]
-        public bool? HasBorder { get; set; }
-
-        /// <summary>
         /// Gets or Sets Tables
         /// </summary>
         [DataMember(Name = "tables", EmitDefaultValue = false)]
@@ -121,7 +114,6 @@ namespace PdfGenerator.Net.Models
             sb.Append("  PageFooter: ").Append(PageFooter).Append("\n");
             sb.Append("  ShouldGeneratePageNumbers: ").Append(ShouldGeneratePageNumbers).Append("\n");
             sb.Append("  PageNumberTemplate: ").Append(PageNumberTemplate).Append("\n");
-            sb.Append("  HasBorder: ").Append(HasBorder).Append("\n");
             sb.Append("  Tables: ").Append(Tables).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

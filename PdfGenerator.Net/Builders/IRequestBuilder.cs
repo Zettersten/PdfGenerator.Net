@@ -12,6 +12,8 @@ namespace PdfGenerator.Net.Builders
 
         Task<Uri> SendAsync();
 
+        Task PreviewAsync(string filePath);
+
         RequestBuilder WithAuthenticator(IAuthenticator authenticator);
 
         RequestBuilder WithBaseUri(Uri baseUri);

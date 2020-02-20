@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using PdfGenerator.Net.Extensions;
 using PdfGenerator.Net.Models;
 using RestSharp.Authenticators;
 
@@ -45,6 +47,19 @@ namespace PdfGenerator.Net.Builders
             var response = await pdfGenerator.GeneratePdf(pdfReportModel);
 
             return new Uri(response.Resource);
+        }
+
+        public async Task PreviewAsync(string filePath = null)
+        {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                filePath = Path.Combine(Path.GetTempPath(), pdfReportModel.ToFileName());
+            }
+
+            using var fileStream = File.OpenWrite(filePath);
+            using var response = await pdfGenerator.GeneratePdfPreview(pdfReportModel);
+
+            await response.CopyToAsync(fileStream);
         }
     }
 }

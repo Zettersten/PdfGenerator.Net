@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using PdfGenerator.Net.Services;
 
 namespace PdfGenerator.Net.Models
 {
@@ -75,7 +76,7 @@ namespace PdfGenerator.Net.Models
         /// <returns>JSON string presentation of the object</returns>
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, PdfGeneratorContentSerialization.SerializerSettings);
         }
     };
 }

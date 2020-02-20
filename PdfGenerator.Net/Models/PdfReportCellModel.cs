@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using PdfGenerator.Net.Services;
 
 namespace PdfGenerator.Net.Models
 {
@@ -46,13 +47,6 @@ namespace PdfGenerator.Net.Models
         public string ImageHref { get; set; }
 
         /// <summary>
-        /// Gets or Sets HasImage
-        /// </summary>
-        [DataMember(Name = "hasImage", EmitDefaultValue = false)]
-        [JsonProperty(PropertyName = "hasImage")]
-        public bool? HasImage { get; set; }
-
-        /// <summary>
         /// Gets or Sets BorderWidth
         /// </summary>
         [DataMember(Name = "borderWidth", EmitDefaultValue = false)]
@@ -72,13 +66,6 @@ namespace PdfGenerator.Net.Models
         [DataMember(Name = "borderDirection", EmitDefaultValue = false)]
         [JsonProperty(PropertyName = "borderDirection")]
         public string BorderDirection { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HasBorder
-        /// </summary>
-        [DataMember(Name = "hasBorder", EmitDefaultValue = false)]
-        [JsonProperty(PropertyName = "hasBorder")]
-        public bool? HasBorder { get; set; }
 
         /// <summary>
         /// Gets or Sets InnerMargins
@@ -200,13 +187,6 @@ namespace PdfGenerator.Net.Models
         public string Value { get; set; }
 
         /// <summary>
-        /// Gets or Sets HasValue
-        /// </summary>
-        [DataMember(Name = "hasValue", EmitDefaultValue = false)]
-        [JsonProperty(PropertyName = "hasValue")]
-        public bool? HasValue { get; set; }
-
-        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -219,11 +199,9 @@ namespace PdfGenerator.Net.Models
             sb.Append("  RowNumber: ").Append(RowNumber).Append("\n");
             sb.Append("  ColSpan: ").Append(ColSpan).Append("\n");
             sb.Append("  ImageHref: ").Append(ImageHref).Append("\n");
-            sb.Append("  HasImage: ").Append(HasImage).Append("\n");
             sb.Append("  BorderWidth: ").Append(BorderWidth).Append("\n");
             sb.Append("  BorderColor: ").Append(BorderColor).Append("\n");
             sb.Append("  BorderDirection: ").Append(BorderDirection).Append("\n");
-            sb.Append("  HasBorder: ").Append(HasBorder).Append("\n");
             sb.Append("  InnerMargins: ").Append(InnerMargins).Append("\n");
             sb.Append("  BackgroundColor: ").Append(BackgroundColor).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
@@ -241,7 +219,6 @@ namespace PdfGenerator.Net.Models
             sb.Append("  PositionY: ").Append(PositionY).Append("\n");
             sb.Append("  ControlId: ").Append(ControlId).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  HasValue: ").Append(HasValue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -252,7 +229,7 @@ namespace PdfGenerator.Net.Models
         /// <returns>JSON string presentation of the object</returns>
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, PdfGeneratorContentSerialization.SerializerSettings);
         }
     }
 }

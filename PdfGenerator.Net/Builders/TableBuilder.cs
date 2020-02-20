@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PdfGenerator.Net.Extensions;
 using PdfGenerator.Net.Models;
 
 namespace PdfGenerator.Net.Builders
 {
     public class TableBuilder : IEnumerable<PdfReportCellModel>, IEnumerable, ITableBuilder
     {
-        private readonly PdfTableModel table;
+        private PdfTableModel table;
 
         public TableBuilder()
         {
@@ -181,6 +182,15 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
+        public TableBuilder AddRowData(IChartBuilder chartBuilder, int colSpan = 1, string textAlign = "center")
+        {
+            var cell = chartBuilder.BuildTableCell();
+            cell.TextAlign = textAlign;
+            cell.ColSpan = colSpan;
+
+            return AddRowData(new List<PdfReportCellModel> { cell });
+        }
+
         public TableBuilder AddRowData(string[] rowContent,
             double fontSize = 12,
             string color = "#000000",
@@ -244,6 +254,34 @@ namespace PdfGenerator.Net.Builders
                 }
             }
 
+            var maxCols = table.ToMaxColumnCount();
+
+            if (UsesDefaultHeaderStyle && table.Header != null && table.Header.Count == 1)
+            {
+                table.Header[0].ColSpan = maxCols;
+            }
+
+            if (UsesDefaultFooterStyle && table.Footer != null && table.Footer.Count == 1)
+            {
+                table.Footer[0].ColSpan = maxCols;
+            }
+
+            if (table.Body != null && table.Body.Count > 0)
+            {
+                foreach (var row in table.Body)
+                {
+                    foreach (var cell in row)
+                    {
+                        if (cell.ControlId != "spacer")
+                        {
+                            continue;
+                        }
+
+                        cell.ColSpan = maxCols;
+                    }
+                }
+            }
+
             return table;
         }
 
@@ -259,12 +297,60 @@ namespace PdfGenerator.Net.Builders
                 {
                     new PdfReportCellModel
                     {
-                        Value = " "
+                        Value = " ",
+                        ControlId = "spacer"
                     }
                 });
             }
 
             return this;
+        }
+
+        public TableBuilder AddDefaultHeaderData(string content)
+        {
+            UsesDefaultHeaderStyle = true;
+
+            table.Header = new List<PdfReportCellModel>
+            {
+                new PdfReportCellModel
+                {
+                    Value = content,
+                    BorderColor = "#000000",
+                    BorderWidth = 3,
+                    FontWeight = "bold",
+                    BorderDirection = "bottom"
+                }
+            };
+
+            AddRowSpacer();
+
+            return this;
+        }
+
+        public TableBuilder AddDefaultFooterData(string content)
+        {
+            UsesDefaultFooterStyle = true;
+
+            AddRowSpacer();
+
+            table.Footer = new List<PdfReportCellModel>
+            {
+                new PdfReportCellModel
+                {
+                    Value = content,
+                    BorderColor = "#000000",
+                    BorderWidth = 1,
+                    BorderDirection = "top",
+                    TextAlign = "right"
+                }
+            };
+
+            return this;
+        }
+
+        public void Clear()
+        {
+            table = new PdfTableModel();
         }
 
         private IEnumerable<PdfReportCellModel> AllCells
@@ -294,5 +380,9 @@ namespace PdfGenerator.Net.Builders
                 return allCells.AsEnumerable();
             }
         }
+
+        private bool UsesDefaultHeaderStyle { get; set; }
+
+        private bool UsesDefaultFooterStyle { get; set; }
     }
 }
