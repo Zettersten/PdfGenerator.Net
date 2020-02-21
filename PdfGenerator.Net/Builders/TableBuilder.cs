@@ -36,7 +36,7 @@ namespace PdfGenerator.Net.Builders
         }
 
         public TableBuilder WithRowNumbers(
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
@@ -96,10 +96,10 @@ namespace PdfGenerator.Net.Builders
 
         public TableBuilder AddHeaderData(
             string[] headerContent,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
-            string textAlign = "center",
+            string textAlign = "left",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,
@@ -151,10 +151,10 @@ namespace PdfGenerator.Net.Builders
 
         public TableBuilder AddFooterData(
             string[] footerContent,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
-            string textAlign = "center",
+            string textAlign = "left",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,
@@ -215,10 +215,10 @@ namespace PdfGenerator.Net.Builders
 
         public TableBuilder AddRowData(
             string[] rowContent,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
-            string textAlign = "center",
+            string textAlign = "left",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,

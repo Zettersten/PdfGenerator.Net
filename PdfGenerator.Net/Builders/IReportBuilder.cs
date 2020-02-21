@@ -33,7 +33,7 @@ namespace PdfGenerator.Net.Builders
 
         ReportBuilder WithPageFooter(
             string content,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
@@ -49,7 +49,7 @@ namespace PdfGenerator.Net.Builders
 
         ReportBuilder WithPageHeader(
             string content,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",

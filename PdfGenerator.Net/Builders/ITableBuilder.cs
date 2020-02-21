@@ -13,7 +13,7 @@ namespace PdfGenerator.Net.Builders
 
         TableBuilder AddFooterData(
             string[] footerContent,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
@@ -41,7 +41,7 @@ namespace PdfGenerator.Net.Builders
 
         TableBuilder AddHeaderData(
             string[] headerContent,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
@@ -65,7 +65,7 @@ namespace PdfGenerator.Net.Builders
 
         TableBuilder AddRowData(
             string[] rowContent,
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
@@ -94,7 +94,7 @@ namespace PdfGenerator.Net.Builders
         TableBuilder WithPageBreak();
 
         TableBuilder WithRowNumbers(
-            double fontSize = 12,
+            double fontSize = 11,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
