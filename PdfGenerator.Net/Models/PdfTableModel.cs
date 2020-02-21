@@ -112,8 +112,10 @@ namespace PdfGenerator.Net.Models
             var sb = new StringBuilder();
             sb.Append("class PdfTableModel {\n");
             sb.Append("  TableNumber: ").Append(TableNumber).Append("\n");
-            sb.Append("  InnerMargins: ").Append(InnerMargins).Append("\n");
             sb.Append("  OuterMargins: ").Append(OuterMargins).Append("\n");
+            sb.Append("  InnerMargins: ").Append(InnerMargins).Append("\n");
+            sb.Append("  InnerMarginsDirection: ").Append(InnerMarginsDirection).Append("\n");
+            sb.Append("  OuterMarginsDirection: ").Append(OuterMarginsDirection).Append("\n");
             sb.Append("  NewPageAfterTable: ").Append(NewPageAfterTable).Append("\n");
             sb.Append("  ShouldInsertRowNumbers: ").Append(ShouldInsertRowNumbers).Append("\n");
             sb.Append("  RowNumberFormat: ").Append(RowNumberFormat).Append("\n");
