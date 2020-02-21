@@ -1,77 +1,33 @@
 {
+  "name": "Basic Statement Sample",
+  "author": "Erik Zettersten",
+  "minRowHeight": 13.0,
   "pageFooter": {
     "innerMargins": 10.0,
     "backgroundColor": "#ffffff",
     "color": "#000000",
     "fontFamily": "Helvetica",
     "fontWeight": "normal",
-    "fontSize": 12.0,
-    "textAlign": "center",
-    "value": "Wednesday, February 19, 2020"
+    "fontSize": 8.0,
+    "textAlign": "left",
+    "fontStyle": "normal",
+    "verticalAlignment": "center",
+    "value": "2/21/2020 12:32 AM © Erik Zettersten"
   },
   "tables": [
     {
-      "outerMargins": 5,
-      "header": [
-        {
-          "colSpan": 1,
-          "borderWidth": 0.0,
-          "borderColor": "#cccccc",
-          "borderDirection": "top",
-          "innerMargins": 0.0,
-          "backgroundColor": "#ffffff",
-          "color": "#000000",
-          "fontFamily": "Helvetica",
-          "fontWeight": "normal",
-          "fontSize": 12.0,
-          "textAlign": "left",
-          "width": 0.0,
-          "value": " "
-        }
-      ],
       "body": [
         [
           {
-            "colSpan": 1,
-            "borderWidth": 0.0,
-            "borderColor": "#cccccc",
-            "borderDirection": "top",
-            "innerMargins": 0.0,
-            "backgroundColor": "#ffffff",
-            "color": "#000000",
-            "fontFamily": "Helvetica",
-            "fontWeight": "normal",
-            "fontSize": 12.0,
-            "textAlign": "left",
-            "width": 0.0,
-            "value": " "
-          }
-        ]
-      ],
-      "footer": [
-        {
-          "colSpan": 1,
-          "borderWidth": 0.0,
-          "borderColor": "#cccccc",
-          "borderDirection": "top",
-          "innerMargins": 0.0,
-          "backgroundColor": "#ffffff",
-          "color": "#000000",
-          "fontFamily": "Helvetica",
-          "fontWeight": "normal",
-          "fontSize": 12.0,
-          "textAlign": "left",
-          "width": 0.0,
-          "value": " "
-        }
-      ]
-    },
-    {
-      "body": [
-        [
-          {
-            "imageHref": "https://media-exp1.licdn.com/dms/image/C4E0BAQEPjfJo2N3mnA/company-logo_200_200/0?e=2159024400&v=beta&t=relFszmxOw16LEMSq9PwyVewmvWRSaDco5iKu3Nimek",
+            "imageHref": "https://i.ibb.co/26RrqYs/logo.png",
             "textAlign": "left"
+          }
+        ],
+        [
+          {
+            "colSpan": 2,
+            "controlId": "spacer",
+            "value": " "
           }
         ],
         [
@@ -83,6 +39,13 @@
           {
             "fontWeight": "bold",
             "value": "1 (800) 834-7790"
+          }
+        ],
+        [
+          {
+            "colSpan": 2,
+            "controlId": "spacer",
+            "value": " "
           }
         ],
         [
@@ -109,6 +72,27 @@
             "textAlign": "right",
             "value": "Primary Account Number: 000111000"
           }
+        ],
+        [
+          {
+            "colSpan": 2,
+            "controlId": "spacer",
+            "value": " "
+          }
+        ],
+        [
+          {
+            "colSpan": 2,
+            "controlId": "spacer",
+            "value": " "
+          }
+        ],
+        [
+          {
+            "colSpan": 2,
+            "controlId": "spacer",
+            "value": " "
+          }
         ]
       ]
     },
@@ -116,14 +100,25 @@
       "header": [
         {
           "colSpan": 3,
-          "borderWidth": 2.0,
+          "borderWidth": 3.0,
           "borderColor": "#000000",
+          "borderDirection": "bottom",
+          "fontWeight": "bold",
           "value": "Account Statement"
         }
       ],
       "body": [
         [
           {
+            "colSpan": 3,
+            "controlId": "spacer",
+            "value": " "
+          }
+        ],
+        [
+          {
+            "fontStyle": "italics",
+            "width": 600.0,
             "value": "If you have questions about your statement, please call us at 703-421-9101"
           },
           {
@@ -133,6 +128,37 @@
           {
             "textAlign": "right",
             "value": "1/13/2020-2/13/2020"
+          }
+        ],
+        [
+          {
+            "colSpan": 3,
+            "controlId": "spacer",
+            "value": " "
+          }
+        ]
+      ],
+      "footer": [
+        {
+          "colSpan": 3,
+          "borderWidth": 1.0,
+          "borderColor": "#000000",
+          "borderDirection": "top",
+          "textAlign": "right",
+          "value": "$1000"
+        }
+      ]
+    },
+    {
+      "innerMargins": 0,
+      "outerMargins": 0,
+      "newPageAfterTable": false,
+      "body": [
+        [
+          {
+            "imageHref": "https://quickchart.io/chart?c={type:'pie',data:{labels:['January','February','March','April','May'], datasets:[{data:[50,60,70,180,190]}]}}&height=200",
+            "textAlign": "center",
+            "height": 200.0
           }
         ]
       ]

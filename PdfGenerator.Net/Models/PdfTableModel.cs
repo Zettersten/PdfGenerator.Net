@@ -20,6 +20,20 @@ namespace PdfGenerator.Net.Models
         public int? TableNumber { get; set; }
 
         /// <summary>
+        /// Gets or Sets Width
+        /// </summary>
+        [DataMember(Name = "width", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "width")]
+        public double? Width { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Alignment
+        /// </summary>
+        [DataMember(Name = "alignment", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "alignment")]
+        public string Alignment { get; set; }
+
+        /// <summary>
         /// Gets or Sets InnerMargins
         /// </summary>
         [DataMember(Name = "innerMargins", EmitDefaultValue = false)]
@@ -27,11 +41,25 @@ namespace PdfGenerator.Net.Models
         public int? InnerMargins { get; set; }
 
         /// <summary>
+        /// Gets or Sets InnerMarginsDirection
+        /// </summary>
+        [DataMember(Name = "innerMarginsDirection", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "innerMarginsDirection")]
+        public string InnerMarginsDirection { get; set; }
+
+        /// <summary>
         /// Gets or Sets OuterMargins
         /// </summary>
         [DataMember(Name = "outerMargins", EmitDefaultValue = false)]
         [JsonProperty(PropertyName = "outerMargins")]
         public int? OuterMargins { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OuterMarginsDirection
+        /// </summary>
+        [DataMember(Name = "outerMarginsDirection", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "outerMarginsDirection")]
+        public string OuterMarginsDirection { get; set; }
 
         /// <summary>
         /// Gets or Sets NewPageAfterTable
@@ -89,6 +117,8 @@ namespace PdfGenerator.Net.Models
             sb.Append("  NewPageAfterTable: ").Append(NewPageAfterTable).Append("\n");
             sb.Append("  ShouldInsertRowNumbers: ").Append(ShouldInsertRowNumbers).Append("\n");
             sb.Append("  RowNumberFormat: ").Append(RowNumberFormat).Append("\n");
+            sb.Append("  Width: ").Append(Width).Append("\n");
+            sb.Append("  Alignment: ").Append(Alignment).Append("\n");
             sb.Append("  Header: ").Append(Header).Append("\n");
             sb.Append("  Body: ").Append(Body).Append("\n");
             sb.Append("  Footer: ").Append(Footer).Append("\n");

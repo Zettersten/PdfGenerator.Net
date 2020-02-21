@@ -94,8 +94,13 @@ namespace PdfGenerator.Net.Tests
                     .Build();
 
                 var chart = ChartJsBuilder
+                    .SetType()
                     .AddLabels("January", "February", "March", "April", "May")
                     .AddData(50, 60, 70, 180, 190)
+                    .AddPlugin(new ChartJsPluginModel
+                    {
+                        Outlabels = new ChartJsOutlabelModel()
+                    })
                     .SetHeight(200);
 
                 var accountStatementTable = new TableBuilder()

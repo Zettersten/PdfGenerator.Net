@@ -15,15 +15,17 @@ namespace PdfGenerator.Net.Builders
             table = new PdfTableModel();
         }
 
-        public TableBuilder WithOuterMargins(int margins)
+        public TableBuilder WithOuterMargins(int margins, string marginDirection = null)
         {
             table.OuterMargins = margins;
+            table.OuterMarginsDirection = marginDirection;
             return this;
         }
 
-        public TableBuilder WithInnerMargins(int margins)
+        public TableBuilder WithInnerMargins(int margins, string marginDirection = null)
         {
             table.InnerMargins = margins;
+            table.InnerMarginsDirection = marginDirection;
             return this;
         }
 
@@ -33,20 +35,24 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public TableBuilder WithRowNumbers(double fontSize = 12,
+        public TableBuilder WithRowNumbers(
+            double fontSize = 12,
             string color = "#000000",
             string fontFamily = "Helvetica",
             string textAlign = "center",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,
+            string innerMarginsDirection = null,
             double width = 0,
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
             string fontStyle = "normal",
+            string fontDecoration = "none",
             string verticalAlignment = "center",
-            int colSpan = 1)
+            int colSpan = 1,
+            int rowSpan = 1)
         {
             table.ShouldInsertRowNumbers = true;
 
@@ -62,13 +68,16 @@ namespace PdfGenerator.Net.Builders
             table.RowNumberFormat.Color = color;
             table.RowNumberFormat.TextAlign = textAlign;
             table.RowNumberFormat.ColSpan = colSpan;
+            table.RowNumberFormat.RowSpan = rowSpan;
             table.RowNumberFormat.BackgroundColor = backgroundColor;
             table.RowNumberFormat.InnerMargins = margins;
+            table.RowNumberFormat.InnerMarginsDirection = innerMarginsDirection;
             table.RowNumberFormat.BorderColor = borderColor;
             table.RowNumberFormat.BorderWidth = borderWidth;
             table.RowNumberFormat.BorderDirection = borderDirection;
             table.RowNumberFormat.VerticalAlignment = verticalAlignment;
             table.RowNumberFormat.FontStyle = fontStyle;
+            table.RowNumberFormat.FontDecoration = fontDecoration;
 
             return this;
         }
@@ -90,17 +99,20 @@ namespace PdfGenerator.Net.Builders
             double fontSize = 12,
             string color = "#000000",
             string fontFamily = "Helvetica",
-            string textAlign = "left",
+            string textAlign = "center",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,
+            string innerMarginsDirection = null,
             double width = 0,
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
             string fontStyle = "normal",
+            string fontDecoration = "none",
             string verticalAlignment = "center",
-            int colSpan = 1)
+            int colSpan = 1,
+            int rowSpan = 1)
         {
             return AddHeaderData(headerContent.Select(x => new PdfReportCellModel
             {
@@ -111,13 +123,16 @@ namespace PdfGenerator.Net.Builders
                 Width = width,
                 TextAlign = textAlign,
                 ColSpan = colSpan,
+                RowSpan = rowSpan,
                 Color = color,
                 BackgroundColor = backgroundColor,
                 InnerMargins = margins,
+                InnerMarginsDirection = innerMarginsDirection,
                 BorderColor = borderColor,
                 BorderWidth = borderWidth,
                 BorderDirection = borderDirection,
                 FontStyle = fontStyle,
+                FontDecoration = fontDecoration,
                 VerticalAlignment = verticalAlignment
             }));
         }
@@ -134,21 +149,25 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public TableBuilder AddFooterData(string[] footerContent,
+        public TableBuilder AddFooterData(
+            string[] footerContent,
             double fontSize = 12,
             string color = "#000000",
             string fontFamily = "Helvetica",
-            string textAlign = "left",
+            string textAlign = "center",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,
+            string innerMarginsDirection = null,
             double width = 0,
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
             string fontStyle = "normal",
+            string fontDecoration = "none",
             string verticalAlignment = "center",
-            int colSpan = 1)
+            int colSpan = 1,
+            int rowSpan = 1)
         {
             return AddFooterData(footerContent.Select(x => new PdfReportCellModel
             {
@@ -159,13 +178,16 @@ namespace PdfGenerator.Net.Builders
                 Width = width,
                 TextAlign = textAlign,
                 ColSpan = colSpan,
+                RowSpan = rowSpan,
                 Color = color,
                 BackgroundColor = backgroundColor,
                 InnerMargins = margins,
+                InnerMarginsDirection = innerMarginsDirection,
                 BorderColor = borderColor,
                 BorderWidth = borderWidth,
                 BorderDirection = borderDirection,
                 FontStyle = fontStyle,
+                FontDecoration = fontDecoration,
                 VerticalAlignment = verticalAlignment
             }));
         }
@@ -191,21 +213,25 @@ namespace PdfGenerator.Net.Builders
             return AddRowData(new List<PdfReportCellModel> { cell });
         }
 
-        public TableBuilder AddRowData(string[] rowContent,
+        public TableBuilder AddRowData(
+            string[] rowContent,
             double fontSize = 12,
             string color = "#000000",
             string fontFamily = "Helvetica",
-            string textAlign = "left",
+            string textAlign = "center",
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             double margins = 0,
+            string innerMarginsDirection = null,
             double width = 0,
             string borderColor = "#cccccc",
             double borderWidth = 0,
             string borderDirection = "top",
             string fontStyle = "normal",
+            string fontDecoration = "none",
             string verticalAlignment = "center",
-            int colSpan = 1)
+            int colSpan = 1,
+            int rowSpan = 1)
         {
             return AddRowData(rowContent.Select(x => new PdfReportCellModel
             {
@@ -216,13 +242,16 @@ namespace PdfGenerator.Net.Builders
                 Width = width,
                 TextAlign = textAlign,
                 ColSpan = colSpan,
+                RowSpan = rowSpan,
                 Color = color,
                 BackgroundColor = backgroundColor,
                 InnerMargins = margins,
+                InnerMarginsDirection = innerMarginsDirection,
                 BorderColor = borderColor,
                 BorderWidth = borderWidth,
                 BorderDirection = borderDirection,
                 FontStyle = fontStyle,
+                FontDecoration = fontDecoration,
                 VerticalAlignment = verticalAlignment
             }));
         }
@@ -351,6 +380,20 @@ namespace PdfGenerator.Net.Builders
         public void Clear()
         {
             table = new PdfTableModel();
+        }
+
+        public TableBuilder SetWidth(double tableWidth)
+        {
+            table.Width = tableWidth;
+
+            return this;
+        }
+
+        public TableBuilder SetAlignment(string alignment)
+        {
+            table.Alignment = alignment;
+
+            return this;
         }
 
         private IEnumerable<PdfReportCellModel> AllCells

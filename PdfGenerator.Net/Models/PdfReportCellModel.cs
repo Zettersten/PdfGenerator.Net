@@ -33,6 +33,13 @@ namespace PdfGenerator.Net.Models
         public int? ColSpan { get; set; }
 
         /// <summary>
+        /// Gets or Sets ColSpan
+        /// </summary>
+        [DataMember(Name = "rowSpan", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "rowSpan")]
+        public int? RowSpan { get; set; }
+
+        /// <summary>
         /// Gets or Sets RowNumber
         /// </summary>
         [DataMember(Name = "rowNumber", EmitDefaultValue = false)]
@@ -73,6 +80,13 @@ namespace PdfGenerator.Net.Models
         [DataMember(Name = "innerMargins", EmitDefaultValue = false)]
         [JsonProperty(PropertyName = "innerMargins")]
         public double? InnerMargins { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InnerMarginsDirection
+        /// </summary>
+        [DataMember(Name = "innerMarginsDirection", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "innerMarginsDirection")]
+        public string InnerMarginsDirection { get; set; }
 
         /// <summary>
         /// Gets or Sets BackgroundColor
@@ -136,6 +150,13 @@ namespace PdfGenerator.Net.Models
         [DataMember(Name = "fontStyle", EmitDefaultValue = false)]
         [JsonProperty(PropertyName = "fontStyle")]
         public string FontStyle { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FontDecoration
+        /// </summary>
+        [DataMember(Name = "fontDecoration", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "fontDecoration")]
+        public string FontDecoration { get; set; }
 
         /// <summary>
         /// Gets or Sets VerticalAlignment
@@ -209,6 +230,7 @@ namespace PdfGenerator.Net.Models
             sb.Append("  FontWeight: ").Append(FontWeight).Append("\n");
             sb.Append("  FontSize: ").Append(FontSize).Append("\n");
             sb.Append("  FontStyle: ").Append(FontStyle).Append("\n");
+            sb.Append("  FontDecoration: ").Append(FontDecoration).Append("\n");
             sb.Append("  VerticalAlignment: ").Append(VerticalAlignment).Append("\n");
             sb.Append("  LineHeight: ").Append(LineHeight).Append("\n");
             sb.Append("  LetterSpacing: ").Append(LetterSpacing).Append("\n");

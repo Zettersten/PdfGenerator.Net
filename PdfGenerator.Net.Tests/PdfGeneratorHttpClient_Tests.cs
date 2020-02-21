@@ -54,35 +54,35 @@ namespace PdfGenerator.Net.Tests
             Assert.True(response.IsSuccess);
         }
 
-        [Fact]
-        public void Should_generate_basic_table_svgs_and_return_urls()
-        {
-            var pdfGenerator = PdfGenerator;
+        //[Fact]
+        //public void Should_generate_basic_table_svgs_and_return_urls()
+        //{
+        //    var pdfGenerator = PdfGenerator;
 
-            var response = pdfGenerator
-                .GenerateSvgs(
-                    BasicTable_Sample
-                )
-                .GetAwaiter().GetResult();
+        //    var response = pdfGenerator
+        //        .GenerateSvgs(
+        //            BasicTable_Sample
+        //        )
+        //        .GetAwaiter().GetResult();
 
-            Assert.NotNull(response);
-            Assert.True(response.Count > 0);
-        }
+        //    Assert.NotNull(response);
+        //    Assert.True(response.Count > 0);
+        //}
 
-        [Fact]
-        public void Should_generate_basic_statement_svgs_and_return_urls()
-        {
-            var pdfGenerator = PdfGenerator;
+        //[Fact]
+        //public void Should_generate_basic_statement_svgs_and_return_urls()
+        //{
+        //    var pdfGenerator = PdfGenerator;
 
-            var response = pdfGenerator
-                .GenerateSvgs(
-                    BasicStatment_Sample
-                )
-                .GetAwaiter().GetResult();
+        //    var response = pdfGenerator
+        //        .GenerateSvgs(
+        //            BasicStatment_Sample
+        //        )
+        //        .GetAwaiter().GetResult();
 
-            Assert.NotNull(response);
-            Assert.True(response.Count > 0);
-        }
+        //    Assert.NotNull(response);
+        //    Assert.True(response.Count > 0);
+        //}
 
         [Fact]
         public void Should_generate_basic_statement_preview()

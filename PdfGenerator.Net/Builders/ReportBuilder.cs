@@ -88,8 +88,10 @@ namespace PdfGenerator.Net.Builders
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             string fontStyle = "normal",
+            string fontDecoration = null,
             string verticalAlignment = "center",
-            double margins = 0)
+            double margins = 0,
+            string marginDirection = null)
         {
             if (report.PageHeader == null)
             {
@@ -97,10 +99,14 @@ namespace PdfGenerator.Net.Builders
             }
 
             report.PageHeader.FontSize = fontSize;
+            report.PageHeader.FontStyle = fontStyle;
+            report.PageHeader.FontDecoration = fontDecoration;
+            report.PageHeader.VerticalAlignment = verticalAlignment;
             report.PageHeader.FontFamily = fontFamily;
             report.PageHeader.FontWeight = fontWeight;
             report.PageHeader.TextAlign = textAlign;
             report.PageHeader.InnerMargins = margins;
+            report.PageHeader.InnerMarginsDirection = marginDirection;
             report.PageHeader.Value = content;
             report.PageHeader.Color = color;
             report.PageHeader.BackgroundColor = backgroundColor;
@@ -117,8 +123,10 @@ namespace PdfGenerator.Net.Builders
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             string fontStyle = "normal",
+            string fontDecoration = null,
             string verticalAlignment = "center",
-            double margins = 0)
+            double margins = 0,
+            string marginDirection = null)
         {
             if (report.PageFooter == null)
             {
@@ -126,12 +134,16 @@ namespace PdfGenerator.Net.Builders
             }
 
             report.PageFooter.FontSize = fontSize;
+            report.PageFooter.FontStyle = fontStyle;
+            report.PageFooter.FontDecoration = fontDecoration;
+            report.PageFooter.VerticalAlignment = verticalAlignment;
             report.PageFooter.FontFamily = fontFamily;
             report.PageFooter.FontWeight = fontWeight;
             report.PageFooter.TextAlign = textAlign;
             report.PageFooter.InnerMargins = margins;
+            report.PageFooter.InnerMarginsDirection = marginDirection;
             report.PageFooter.Value = content;
-            report.PageFooter.Color = color; ;
+            report.PageFooter.Color = color;
             report.PageFooter.BackgroundColor = backgroundColor;
 
             return this;
@@ -161,21 +173,22 @@ namespace PdfGenerator.Net.Builders
             return this;
         }
 
-        public ReportBuilder AddChart(IChartBuilder chartBuilder, string textAlign = "center", int innerMargins = 0, int outerMargins = 0, bool newPageAfterChart = false)
+        public ReportBuilder AddChart(
+            IChartBuilder chartBuilder,
+            string textAlign = "center",
+            int innerMargins = 0,
+            string innerMarginsDirection = null,
+            int outerMargins = 0,
+            string outerMarginsDirection = null,
+            bool newPageAfterChart = false)
         {
             var pdfTableModel = new PdfTableModel()
             {
                 NewPageAfterTable = newPageAfterChart,
                 OuterMargins = outerMargins,
-                InnerMargins = innerMargins
-            };
-
-            pdfTableModel.Header = new List<PdfReportCellModel>
-            {
-                new PdfReportCellModel
-                {
-                    Value = " "
-                }
+                OuterMarginsDirection = outerMarginsDirection,
+                InnerMargins = innerMargins,
+                InnerMarginsDirection = innerMarginsDirection
             };
 
             var cell = chartBuilder.BuildTableCell();
@@ -186,14 +199,6 @@ namespace PdfGenerator.Net.Builders
                 new List<PdfReportCellModel>
                 {
                     cell
-                }
-            };
-
-            pdfTableModel.Footer = new List<PdfReportCellModel>
-            {
-                new PdfReportCellModel
-                {
-                    Value = " "
                 }
             };
 

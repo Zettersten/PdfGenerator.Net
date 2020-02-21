@@ -22,7 +22,14 @@ namespace PdfGenerator.Net.Builders
 
         ReportBuilder WithPageBorders(double borderWidth, string borderColor = "#cccccc", string borderDirection = "top");
 
-        ReportBuilder AddChart(IChartBuilder chartBuilder, string textAlign = "center", int innerMargins = 0, int outerMargins = 0, bool newPageAfterChart = false);
+        ReportBuilder AddChart(
+            IChartBuilder chartBuilder,
+            string textAlign = "center",
+            int innerMargins = 0,
+            string innerMarginsDirection = null,
+            int outerMargins = 0,
+            string outerMarginsDirection = null,
+            bool newPageAfterChart = false);
 
         ReportBuilder WithPageFooter(
             string content,
@@ -33,8 +40,10 @@ namespace PdfGenerator.Net.Builders
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             string fontStyle = "normal",
+            string fontDecoration = null,
             string verticalAlignment = "center",
-            double margins = 0);
+            double margins = 0,
+            string marginDirection = null);
 
         ReportBuilder WithDefaultPageFooter();
 
@@ -47,8 +56,10 @@ namespace PdfGenerator.Net.Builders
             string fontWeight = "normal",
             string backgroundColor = "#ffffff",
             string fontStyle = "normal",
+            string fontDecoration = null,
             string verticalAlignment = "center",
-            double margins = 0);
+            double margins = 0,
+            string marginDirection = null);
 
         ReportBuilder WithDefaultPageHeader();
 
