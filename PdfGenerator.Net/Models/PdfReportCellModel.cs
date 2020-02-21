@@ -219,11 +219,13 @@ namespace PdfGenerator.Net.Models
             sb.Append("  CellNumber: ").Append(CellNumber).Append("\n");
             sb.Append("  RowNumber: ").Append(RowNumber).Append("\n");
             sb.Append("  ColSpan: ").Append(ColSpan).Append("\n");
+            sb.Append("  RowSpan: ").Append(RowSpan).Append("\n");
             sb.Append("  ImageHref: ").Append(ImageHref).Append("\n");
             sb.Append("  BorderWidth: ").Append(BorderWidth).Append("\n");
             sb.Append("  BorderColor: ").Append(BorderColor).Append("\n");
             sb.Append("  BorderDirection: ").Append(BorderDirection).Append("\n");
             sb.Append("  InnerMargins: ").Append(InnerMargins).Append("\n");
+            sb.Append("  InnerMarginsDirection: ").Append(InnerMarginsDirection).Append("\n");
             sb.Append("  BackgroundColor: ").Append(BackgroundColor).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
             sb.Append("  FontFamily: ").Append(FontFamily).Append("\n");
